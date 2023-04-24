@@ -14,13 +14,12 @@ if not os.path.isfile('dir_data.csv'):
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
 # 엑셀 파일 열기 (read-only 모드)
-workbook = openpyxl.load_workbook('movie_list.xlsx', read_only=True)
+workbook = openpyxl.load_workbook('data/movie_list.xlsx', read_only=True)
 
 # 원하는 시트 선택
-worksheet = workbook['영화리스트']
-
+worksheet = workbook['Sheet1']
 # 특정 열 선택 (예시로 B열을 선택)
-column_letter = 'D'
+column_letter = 'C'
 column_data = []
 for row in worksheet.iter_rows():
     column_data.append(row[column_index_from_string(column_letter)-1].value)
@@ -45,7 +44,7 @@ for i in range(1, len(column_data)):
             cleaned_movie = {key: value.replace('\n', ' ').replace('\r', ' ') if isinstance(
                 value, str) else value for key, value in movie.items()}
             cleaned_movie['movie_id'] = movie_id
-            if movie['job'] == "Director" and movie['known_for_department'] == "Directing":
+            if movie['job'] == "Director" and (movie['known_for_department'] == "Directing" and movie['department'] == 'Directing'):
                 writer.writerow(cleaned_movie)
 
     print("CSV 파일에 데이터가 추가되었습니다.")
