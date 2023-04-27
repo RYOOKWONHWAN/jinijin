@@ -1,0 +1,6 @@
+Selected movies (5 movies) : The Super Mario Bros,Shazam!,Ant-Man and the Wasp: Quantumania,Avatar: The Way of Water,Creed III
+
+A-priori & K-means clustering recommend movie : 
+
+Collaborative filtering recommend movie : The Mulligan,프로젝트 X,Virus: 32,온 어 윙 앤드 어 프레이어,토르: 천둥의 신,Historias para no contar,온 어 윙 앤드 어 프레이어,토르: 천둥의 신,Historias para no contar
+

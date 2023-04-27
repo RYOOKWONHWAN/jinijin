@@ -20,7 +20,8 @@ const ReviewPage = () => {
     setSelectedMovie(movie);
     setShow(true);
   }
-
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   useEffect(() => {
     axios.get('http://localhost:8090/printrandom')
@@ -43,7 +44,17 @@ const ReviewPage = () => {
               <p className="text-center">작품을 평가해보세요. 당신의 취향에 딱 맞는 작품을 추천해드릴게요.</p>
             </div>
           </div>
-          <button className='btn btn-primary'>랜덤 영화</button>
+          <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+            <DropdownToggle caret color="primary">
+              옵션 선택
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>선택하세요</DropdownItem>
+              <DropdownItem>옵션 1</DropdownItem>
+              <DropdownItem>옵션 2</DropdownItem>
+              <DropdownItem>옵션 3</DropdownItem>
+            </DropdownMenu>
+          </ButtonDropdown>
         </header>
 
         <div className="row">
